@@ -2,7 +2,7 @@ PROJECT_NAME="$(shell basename "$(PWD)")"
 PROJECT_DIR="$(shell pwd)"
 DOCKER_COMPOSE="$(shell which docker-compose)"
 DOCKER="$(shell which docker)"
-CONTAINER_PHP="php-temp"
+CONTAINER_PHP="php-unit"
 
 init: generate-env up
 

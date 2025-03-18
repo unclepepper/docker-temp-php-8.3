@@ -1,12 +1,12 @@
 services:
-  php-temp:
+  php-unit:
     build:
       context: .
       args:
         UID: ${DUID:-1000}
         GID: ${DGID:-1000}
       dockerfile: docker/${APP_ENV}/Dockerfile
-    container_name: php-temp
+    container_name: ${PROJECT_NAME}-php-unit
     environment:
       APP_ENV: ${APP_ENV:-dev}
       COMPOSER_MEMORY_LIMIT: -1
@@ -19,11 +19,11 @@ services:
     networks:
       - temp-network
     depends_on:
-      - db-temp
+      - database
 
-  db-temp:
+  database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
-    container_name: db-temp
+    container_name: ${PROJECT_NAME}-database
     ports:
       - 5432:5432
     volumes:
